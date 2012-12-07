@@ -1,0 +1,7 @@
+<linked-list>
+  <redirect>
+    <responseCode>301</responseCode>
+    <redirectFromHost>localhost</redirectFromHost>
+    <redirectToHost>synapse.sagebase.org</redirectToHost>
+  </redirect>
+</linked-list>
