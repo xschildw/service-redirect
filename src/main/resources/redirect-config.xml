@@ -1,7 +1,17 @@
 <linked-list>
-  <redirect>
-    <responseCode>301</responseCode>
-    <redirectFromHost>localhost</redirectFromHost>
-    <redirectToHost>synapse.sagebase.org</redirectToHost>
-  </redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>synapse-dev.sagebase.org</redirectFromHost>
+		<redirectToHost>portal-dev-xschildw.dev.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>repo-dev.sagebase.org</redirectFromHost>
+		<redirectToHost>repo-dev-xschildw.dev.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>auth-dev.sagebase.org</redirectFromHost>
+		<redirectToHost>auth-dev-xschildw.dev.sagebase.org</redirectToHost>
+	</redirect>
 </linked-list>
