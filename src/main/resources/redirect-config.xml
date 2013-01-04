@@ -14,4 +14,34 @@
 		<redirectFromHost>auth-dev.sagebase.org</redirectFromHost>
 		<redirectToHost>auth-dev-xschildw.dev.sagebase.org</redirectToHost>
 	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>synapse-staging.sagebase.org</redirectFromHost>
+		<redirectToHost>synapse-staging.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>repo-staging.sagebase.org</redirectFromHost>
+		<redirectToHost>repo-staging.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>auth-staging.sagebase.org</redirectFromHost>
+		<redirectToHost>auth-staging.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>synapse.sagebase.org</redirectFromHost>
+		<redirectToHost>synapse.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>repo-prod.sagebase.org</redirectFromHost>
+		<redirectToHost>repo-prod.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>auth-prod.sagebase.org</redirectFromHost>
+		<redirectToHost>auth-prod.prod.sagebase.org</redirectToHost>
+	</redirect>
 </linked-list>
