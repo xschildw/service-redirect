@@ -16,6 +16,11 @@
 	</redirect>
 	<redirect>
 		<responseCode>301</responseCode>
+		<redirectFromHost>file-dev.sagebase.org</redirectFromHost>
+		<redirectToHost>file-dev-test.dev.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
 		<redirectFromHost>synapse-staging.sagebase.org</redirectFromHost>
 		<redirectToHost>synapse-staging.prod.sagebase.org</redirectToHost>
 	</redirect>
@@ -31,6 +36,11 @@
 	</redirect>
 	<redirect>
 		<responseCode>301</responseCode>
+		<redirectFromHost>file-staging.sagebase.org</redirectFromHost>
+		<redirectToHost>file-staging.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
 		<redirectFromHost>synapse.sagebase.org</redirectFromHost>
 		<redirectToHost>synapse.prod.sagebase.org</redirectToHost>
 	</redirect>
@@ -43,5 +53,10 @@
 		<responseCode>301</responseCode>
 		<redirectFromHost>auth-prod.sagebase.org</redirectFromHost>
 		<redirectToHost>auth-prod.prod.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>file-prod.sagebase.org</redirectFromHost>
+		<redirectToHost>file-prod.prod.sagebase.org</redirectToHost>
 	</redirect>
 </linked-list>
