@@ -40,7 +40,7 @@
 		<redirectToHost>file-staging.prod.sagebase.org</redirectToHost>
 	</redirect>
 	<redirect>
-		<responseCode>301</responseCode>
+		<responseCode>200</responseCode>
 		<redirectFromHost>synapse.sagebase.org</redirectFromHost>
 		<redirectToHost>synapse.prod.sagebase.org</redirectToHost>
 	</redirect>
