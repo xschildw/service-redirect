@@ -1,8 +1,10 @@
 package org.sagebase.redirect.filter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,12 @@ public class RedirectFilter implements Filter{
 
 	private Map<String, RedirectData> redirectData;
 	private static Logger logger = Logger.getLogger(RedirectFilter.class);
-	
+	private static final String scriptTemplate = 
+		"<!DOCTYPE html PUBLIC\"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+		"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+		"<script type=\"text/javascript\">\n" +
+		"var hash = \"\"; if(window.location.hash) {hash = window.location.hash.substring(1);} window.location.replace(\"%s\" + hash)\n" +
+		"</script> </html>";
 	public void destroy() {
 		// TODO Auto-generated method stub
 		
@@ -58,6 +65,7 @@ public class RedirectFilter implements Filter{
 		RedirectData redirect = redirectData.get(address);
 		String newHost = null;
 		URI uri = null;
+		int respCode = 0;
 		
 		if(redirect == null){
 			// if we do not have a mapping let it go through
@@ -66,7 +74,9 @@ public class RedirectFilter implements Filter{
 			return;
 		}else{
 			newHost = redirect.getRedirectToHost();
+			respCode = redirect.getResponseCode();
 			logger.debug("newHost: " + newHost);
+			
 			try {
 				uri = new URI("https", null, newHost, -1, servletPath, query, null);
 				logger.debug("new URI:" + uri.toString());
@@ -74,10 +84,24 @@ public class RedirectFilter implements Filter{
 				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, null, ex);
 				throw new RuntimeException(ex.getMessage());
 			}
-			// Send a redirect
-			response.setStatus(redirect.getResponseCode());
-			// Build the new url
-			response.setHeader("Location", uri.toString());
+			
+			if ((300 < respCode) && (400 > respCode)) {
+				// Send a redirect
+				response.setStatus(respCode);
+				// Build the new url
+				response.setHeader("Location", uri.toString());
+			} else if (200 == respCode) { // 200
+				String script = String.format(scriptTemplate, uri.toString() + "/#");
+				logger.debug("Script: " + script);
+				response.setStatus(respCode);
+				response.setContentType("text/html");
+				PrintWriter pw = response.getWriter();
+				pw.println(script);
+				pw.flush();
+			} else {
+				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, "Response code not supported:" + respCode);
+				throw new RuntimeException("Response code not supported" + respCode);
+			}
 		}
 		
 	}

@@ -1,8 +1,8 @@
 <linked-list>
 	<redirect>
-		<responseCode>301</responseCode>
+		<responseCode>200</responseCode>
 		<redirectFromHost>synapse-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>portal-dev-test.dev.sagebase.org</redirectToHost>
+		<redirectToHost>synapse-dev-test.prod.sagebase.org</redirectToHost>
 	</redirect>
 	<redirect>
 		<responseCode>301</responseCode>
@@ -20,7 +20,7 @@
 		<redirectToHost>file-dev-test.dev.sagebase.org</redirectToHost>
 	</redirect>
 	<redirect>
-		<responseCode>301</responseCode>
+		<responseCode>200</responseCode>
 		<redirectFromHost>synapse-staging.sagebase.org</redirectFromHost>
 		<redirectToHost>synapse-staging.prod.sagebase.org</redirectToHost>
 	</redirect>
@@ -40,7 +40,7 @@
 		<redirectToHost>file-staging.prod.sagebase.org</redirectToHost>
 	</redirect>
 	<redirect>
-		<responseCode>301</responseCode>
+		<responseCode>200</responseCode>
 		<redirectFromHost>synapse.sagebase.org</redirectFromHost>
 		<redirectToHost>synapse.prod.sagebase.org</redirectToHost>
 	</redirect>
