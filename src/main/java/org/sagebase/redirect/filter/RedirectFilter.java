@@ -85,18 +85,22 @@ public class RedirectFilter implements Filter{
 				throw new RuntimeException(ex.getMessage());
 			}
 			
-			if (301 == respCode) {
+			if ((300 < respCode) && (400 > respCode)) {
 				// Send a redirect
 				response.setStatus(respCode);
 				// Build the new url
 				response.setHeader("Location", uri.toString());
-			} else { // 200
+			} else if (200 == respCode) { // 200
 				String script = String.format(scriptTemplate, uri.toString() + "/#");
 				logger.debug("Script: " + script);
 				response.setStatus(respCode);
 				response.setContentType("text/html");
 				PrintWriter pw = response.getWriter();
 				pw.println(script);
+				pw.flush();
+			} else {
+				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, "Response code not supported:" + respCode);
+				throw new RuntimeException("Response code not supported" + respCode);
 			}
 		}
 		
