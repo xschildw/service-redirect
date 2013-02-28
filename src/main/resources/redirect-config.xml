@@ -2,7 +2,7 @@
 	<redirect>
 		<responseCode>200</responseCode>
 		<redirectFromHost>synapse-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>synapse-dev-test.prod.sagebase.org</redirectToHost>
+		<redirectToHost>portal-dev-test.dev.sagebase.org</redirectToHost>
 	</redirect>
 	<redirect>
 		<responseCode>301</responseCode>
