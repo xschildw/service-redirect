@@ -1,62 +1,7 @@
 <linked-list>
 	<redirect>
 		<responseCode>200</responseCode>
-		<redirectFromHost>synapse-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>dev.synapse.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>repo-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>repo-dev-test.dev.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>auth-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>auth-dev-test.dev.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>file-dev.sagebase.org</redirectFromHost>
-		<redirectToHost>file-dev-test.dev.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>200</responseCode>
-		<redirectFromHost>synapse-staging.sagebase.org</redirectFromHost>
-		<redirectToHost>staging.synapse.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>repo-staging.sagebase.org</redirectFromHost>
-		<redirectToHost>repo-staging.prod.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>auth-staging.sagebase.org</redirectFromHost>
-		<redirectToHost>auth-staging.prod.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>file-staging.sagebase.org</redirectFromHost>
-		<redirectToHost>file-staging.prod.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>200</responseCode>
-		<redirectFromHost>synapse.sagebase.org</redirectFromHost>
+		<redirectFromHost>synapse.prod.sagebase.org</redirectFromHost>
 		<redirectToHost>www.synapse.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>repo-prod.sagebase.org</redirectFromHost>
-		<redirectToHost>repo-prod.prod.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>auth-prod.sagebase.org</redirectFromHost>
-		<redirectToHost>auth-prod.prod.sagebase.org</redirectToHost>
-	</redirect>
-	<redirect>
-		<responseCode>301</responseCode>
-		<redirectFromHost>file-prod.sagebase.org</redirectFromHost>
-		<redirectToHost>file-prod.prod.sagebase.org</redirectToHost>
 	</redirect>
 </linked-list>
