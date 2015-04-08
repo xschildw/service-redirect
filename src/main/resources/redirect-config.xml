@@ -1,5 +1,10 @@
 <linked-list>
 	<redirect>
+		<responseCode>301</responseCode>
+		<redirectFromHost>sagebase.org</redirectFromHost>
+		<redirectToHost>www.sagebase.org</redirectToHost>
+	</redirect>
+	<redirect>
 		<responseCode>200</responseCode>
 		<redirectFromHost>synapse-dev.sagebase.org</redirectFromHost>
 		<redirectToHost>dev.synapse.org</redirectToHost>
