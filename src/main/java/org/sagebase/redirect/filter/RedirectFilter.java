@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -66,19 +66,24 @@ public class RedirectFilter implements Filter{
 		String newHost = null;
 		URI uri = null;
 		int respCode = 0;
-		
+
 		if(redirect == null){
 			// if we do not have a mapping let it go through
 			logger.debug("No mapping for host");
 			chain.doFilter(request, response);
 			return;
 		}else{
+			String protocol = "https";
+			if(redirect.getProtocol() != null){
+				protocol = redirect.getProtocol();
+			}
+			
 			newHost = redirect.getRedirectToHost();
 			respCode = redirect.getResponseCode();
 			logger.debug("newHost: " + newHost);
 			
 			try {
-				uri = new URI("https", null, newHost, -1, servletPath, query, null);
+				uri = new URI(protocol, null, newHost, -1, servletPath, query, null);
 				logger.debug("new URI:" + uri.toString());
 			} catch (URISyntaxException ex) {
 				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, null, ex);

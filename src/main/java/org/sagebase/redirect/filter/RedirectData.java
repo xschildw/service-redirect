@@ -10,6 +10,7 @@ public class RedirectData {
 	private int responseCode;
 	private String redirectFromHost;
 	private String redirectToHost;
+	private String protocol;
 	
 	public int getResponseCode() {
 		return responseCode;
@@ -29,10 +30,19 @@ public class RedirectData {
 	public void setRedirectToHost(String redirectToHost) {
 		this.redirectToHost = redirectToHost;
 	}
+	
+	public String getProtocol() {
+		return protocol;
+	}
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((protocol == null) ? 0 : protocol.hashCode());
 		result = prime
 				* result
 				+ ((redirectFromHost == null) ? 0 : redirectFromHost.hashCode());
@@ -50,6 +60,11 @@ public class RedirectData {
 		if (getClass() != obj.getClass())
 			return false;
 		RedirectData other = (RedirectData) obj;
+		if (protocol == null) {
+			if (other.protocol != null)
+				return false;
+		} else if (!protocol.equals(other.protocol))
+			return false;
 		if (redirectFromHost == null) {
 			if (other.redirectFromHost != null)
 				return false;
@@ -68,8 +83,8 @@ public class RedirectData {
 	public String toString() {
 		return "RedirectData [responseCode=" + responseCode
 				+ ", redirectFromHost=" + redirectFromHost
-				+ ", redirectToHost=" + redirectToHost + "]";
+				+ ", redirectToHost=" + redirectToHost + ", protocol="
+				+ protocol + "]";
 	}
-	
 
 }

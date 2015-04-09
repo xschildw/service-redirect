@@ -3,6 +3,7 @@
 		<responseCode>301</responseCode>
 		<redirectFromHost>sagebase.org</redirectFromHost>
 		<redirectToHost>www.sagebase.org</redirectToHost>
+		<protocol>http</protocol>
 	</redirect>
 	<redirect>
 		<responseCode>200</responseCode>
