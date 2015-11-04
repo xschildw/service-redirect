@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sagebionetworks</groupId>
   <artifactId>redirect-server</artifactId>
-  <version>0.0.13-SNAPSHOT</version>
+  <version>0.0.13-1</version>
   <packaging>war</packaging>
   	<repositories>
 		<repository>
@@ -112,6 +112,34 @@
 				</configuration>
 			</plugin>
 
+			<!-- Java compiler version -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>sagebionetworks</id>
+			<name>sagebionetworks-releases</name>
+			<url>http://sagebionetworks.artifactoryonline.com/sagebionetworks/libs-releases-local
+			</url>
+		</repository>
+		<snapshotRepository>
+			<id>sagebionetworks</id>
+			<name>sagebionetworks-snapshots</name>
+			<url>http://sagebionetworks.artifactoryonline.com/sagebionetworks/libs-snapshots-local
+			</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>
