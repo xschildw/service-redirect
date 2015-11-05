@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class RedirectFilter implements Filter{
 		"<!DOCTYPE html PUBLIC\"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
 		"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
 		"<script type=\"text/javascript\">\n" +
-		"var hash = \"\"; if(window.location.hash) {hash = window.location.hash.substring(1);} window.location.replace(\"%s\" + hash)\n" +
+		"var hash = \"\"; if(window.location.hash) {hash = \"/\" + window.location.hash;} window.location.replace(\"%s\" + hash)\n" +
 		"</script> </html>";
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -46,7 +47,7 @@ public class RedirectFilter implements Filter{
 
 		// This just gets the URL (i.e. no query or fragment)
 		StringBuffer reqUrl = request.getRequestURL();
-		logger.debug("request URL" + reqUrl.toString());
+		logger.debug("request URL: " + reqUrl.toString());
 		String scheme = request.getScheme();
 		logger.debug("scheme: " + scheme);
 		String servletPath = request.getServletPath();
@@ -83,7 +84,7 @@ public class RedirectFilter implements Filter{
 			logger.debug("newHost: " + newHost);
 			
 			try {
-				uri = new URI(protocol, null, newHost, -1, servletPath, query, null);
+				uri = new URI("https", null, newHost, -1, servletPath, query, null);
 				logger.debug("new URI:" + uri.toString());
 			} catch (URISyntaxException ex) {
 				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,7 +97,7 @@ public class RedirectFilter implements Filter{
 				// Build the new url
 				response.setHeader("Location", uri.toString());
 			} else if (200 == respCode) { // 200
-				String script = String.format(scriptTemplate, uri.toString() + "/#");
+				String script = String.format(scriptTemplate, uri.toString());
 				logger.debug("Script: " + script);
 				response.setStatus(respCode);
 				response.setContentType("text/html");
