@@ -55,7 +55,7 @@ public class RedirectFilterTest {
 	}
 	
 	@Test
-	public void testDoFilterNotSynapse() throws IOException, ServletException {
+	public void testDoFilterNoMapping() throws IOException, ServletException {
 		String expectedScheme = "http";
 		String expectedPath = "/index.html";
 		String expectedServerName = "server.org";
@@ -95,7 +95,7 @@ public class RedirectFilterTest {
 	}
 	
 	@Test
-	public void testDoFilterWithFriendlyUrl() throws Exception {
+	public void testDoFilterSynapseWithFriendlyUrl() throws Exception {
 		String expectedScheme = "http";
 		String expectedPath = "/mySyn123";
 		String expectedQueryString = "";
@@ -120,6 +120,36 @@ public class RedirectFilterTest {
 		verify(mockPrintWriter).println(expectedScript2);
 		verify(mockPrintWriter).flush();
 
+	}
+	
+	@Test
+	public void testSagebase() throws Exception {
+		String expectedScheme = "http";
+		String expectedPath = "";
+		String expectedQueryString = "";
+		String expectedServerName = "sagebase.org";
+		StringBuffer expectedUrl = new StringBuffer(expectedScheme + "://" + expectedServerName + expectedPath + expectedQueryString);
+		final String expectedScript2 = 
+				"<!DOCTYPE html PUBLIC\"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+				"<script type=\"text/javascript\">\n" +
+				"var hash = \"\"; if(window.location.hash) {hash = \"/\" + window.location.hash;} window.location.replace(\"http://www.sagebase.org\" + hash)\n" +
+				"</script> </html>";
+		
+
+		when(mockReq.getRequestURL()).thenReturn(expectedUrl);
+		when(mockReq.getScheme()).thenReturn(expectedScheme);
+		when(mockReq.getServletPath()).thenReturn(expectedPath);
+		when(mockReq.getServerName()).thenReturn(expectedServerName);
+		when(mockResp.getWriter()).thenReturn(mockPrintWriter);
+
+		filter.doFilter(mockReq, mockResp, mockChain);
+	
+		verify(mockChain, never()).doFilter(mockReq, mockResp);
+		verify(mockPrintWriter, never()).println(expectedScript2);
+		verify(mockPrintWriter, never()).flush();
+		verify(mockResp).setStatus(301);
+		verify(mockResp).setHeader("Location", "http://www.sagebase.org");
 	}
 
 }

@@ -84,7 +84,7 @@ public class RedirectFilter implements Filter{
 			logger.debug("newHost: " + newHost);
 			
 			try {
-				uri = new URI("https", null, newHost, -1, servletPath, query, null);
+				uri = new URI(protocol, null, newHost, -1, servletPath, query, null);
 				logger.debug("new URI:" + uri.toString());
 			} catch (URISyntaxException ex) {
 				java.util.logging.Logger.getLogger(RedirectFilter.class.getName()).log(Level.SEVERE, null, ex);
